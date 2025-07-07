@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevention Pioneers - Cancer Prevention Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#EC4899',
+                        dark: '#1F2937',
+                        light: '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions and animations */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+        .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1893d6f6;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #f4f2f2;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      color: #f1f1f1;
+      font-weight: bolder;
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
+    .openbtn {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="hidden md:block">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                        alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                        class="h-8 w-8">
+                    <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+                </div>
+                </div> 
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#home"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Home</a>
+                        <a href="#features"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Features</a>
+                        <a href="#subscriptions"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Subscriptions</a>
+                        <a href="#doctors"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Hospitals</a>
+                        <a href="#resources"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Resources</a>
+                    </div>
+                </div>
+
+                <!-- Login/Signup Buttons -->
+                <div class="hidden md:block">
+                    <button onclick="showAuthModal('login')"
+                        class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition-all"><a href="login.html">Log in</a></button>
+                    <button onclick="showAuthModal('signup')"
+                        class="ml-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-all"><a href="login.html">Sign up</a>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <!-- <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div class="container mx-auto flex justify-between items-center">
+        <!-- <h1 class="text-2xl font-bold">Prevention Pioneers</h1> -->
+         <div class="md:hidden">
+        <div class="flex-shrink-0 flex items-center">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                class="h-8 w-8">
+            <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+        </div>
+    </div>
+        <span class="openbtn block md:hidden" onclick="openNav()"><i class="fas fa-bars text-2xl"></i></span>
+        <nav id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="#home"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Home</a>
+      <a href="#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Features</a>
+      <a href="#subscriptions"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Subscriptions</a>
+      <a href="#doctors"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Hospitals</a>
+      <a href="#resources"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Resources</a>
+          <div>  
+          <button onclick="showAuthModal('login')"
+          class="w-full mt-2 px-4 py-2 text-white text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white">Login</button>
+          </div>
+        <div>  
+      <button onclick="showAuthModal('signup')"
+          class="w-full mt-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700">Sign
+          Up</button>
+        </div>  
+        </nav>
+      </div>
+    <!-- Articles Section -->
+    <section id="articles" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Cancer-Related Articles</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Stay informed with the latest research and insights on cancer prevention and treatment.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/98ef43b7-7745-4561-a76f-7913d12c25e8.png" alt="Understanding Cancer" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Understanding Cancer: The Basics</h3>
+                    <p class="text-gray-600 mb-4">An overview of what cancer is, how it develops, and the different types of cancer.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. Jane Smith</p>
+                    <button onclick="toggleArticle('article1-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article1-content" class="hidden mt-4">
+                        <p>Cancer is a group of diseases characterized by the uncontrolled growth and spread of abnormal cells. If the spread is not controlled, it can result in death. There are more than 100 different types of cancer, and they can affect any part of the body. Early detection and treatment are crucial for improving outcomes. Understanding the risk factors, such as genetics, lifestyle choices, and environmental exposures, can help individuals take proactive steps in their health journey. Regular screenings and awareness of symptoms can lead to earlier diagnosis and better treatment options.</p>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d2f0f50-141c-4e9f-a425-0cafcec2c4ef.png"" alt="The Importance of Early Detection" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">The Importance of Early Detection</h3>
+                    <p class="text-gray-600 mb-4">Why early detection of cancer can significantly improve treatment outcomes.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. John Doe</p>
+                    <button onclick="toggleArticle('article2-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article2-content" class="hidden mt-4">
+                        <p>Early detection of cancer can lead to more effective treatment options and better survival rates. Regular screenings and awareness of the signs and symptoms of cancer can help individuals seek medical advice sooner, which is critical for successful treatment. For instance, mammograms for breast cancer and colonoscopies for colorectal cancer are essential tools that can detect cancer at an early stage when it is most treatable. Education about risk factors and the importance of routine check-ups can empower individuals to take charge of their health and potentially save lives.</p>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.TqjWBDFuDJQdnFqQdfSq_QHaE8?w=243&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Nutrition and Cancer Prevention" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Nutrition and Cancer Prevention</h3>
+                    <p class="text-gray-600 mb-4">How a healthy diet can help reduce the risk of cancer.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. Emily Johnson</p>
+                    <button onclick="toggleArticle('article3-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article3-content" class="hidden mt-4">
+                        <p>A balanced diet rich in fruits, vegetables, whole grains, and lean proteins can help reduce the risk of cancer. Certain foods contain antioxidants and other compounds that may protect cells from damage and reduce inflammation, which is linked to cancer development. For example, cruciferous vegetables like broccoli and kale, berries, and nuts are known for their cancer-fighting properties. Additionally, maintaining a healthy weight and limiting processed foods and red meats can further decrease cancer risk. Nutrition plays a vital role in overall health and can be a powerful ally in cancer prevention.</p>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.lnxQWfVUjstSTjNYqaq_VAHaD4?w=345&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Advancements in Cancer Treatment" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Advancements in Cancer Treatment</h3>
+                    <p class="text-gray-600 mb-4">Explore the latest breakthroughs in cancer therapies.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. Michael Brown</p>
+                    <button onclick="toggleArticle('article4-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article4-content" class="hidden mt-4">
+                        <p>Recent advancements in cancer treatment include targeted therapies, immunotherapy, and personalized medicine. These innovative approaches aim to improve the effectiveness of treatment while minimizing side effects, offering new hope to patients. Targeted therapies focus on specific genetic mutations in cancer cells, while immunotherapy harnesses the body's immune system to fight cancer. Additionally, personalized medicine tailors treatment plans based on individual patient characteristics, leading to more effective outcomes. Ongoing research continues to explore new treatment modalities, providing optimism for future cancer care.</p>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.j8t6T2IiW3--vyAkD4uwLwAAAA?w=236&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Mental Health and Cancer" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Mental Health and Cancer</h3>
+                    <p class="text-gray-600 mb-4">Understanding the psychological impact of a cancer diagnosis.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. Sarah Lee</p>
+                    <button onclick="toggleArticle('article5-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article5-content" class="hidden mt-4">
+                        <p>A cancer diagnosis can have a profound effect on mental health. Patients may experience anxiety, depression, and fear. It's important to address these emotional challenges through support groups, counseling, and therapy to improve overall well-being during treatment. Mental health support is crucial for coping with the stress of diagnosis and treatment, and can significantly impact recovery. Engaging in mindfulness practices, physical activity, and maintaining social connections can also enhance mental resilience. Recognizing the importance of mental health in cancer care is essential for holistic treatment.</p>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.vdjC89GPJaQh9L4XqtJkMQHaFU?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Living Well After Cancer" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Living Well After Cancer</h3>
+                    <p class="text-gray-600 mb-4">Tips for maintaining health and wellness post-treatment.</p>
+                    <p class="text-gray-500 text-sm mb-2">Author: Dr. Anna White</p>
+                    <button onclick="toggleArticle('article6-content')" class="text-primary font-semibold">Read Article</button>
+                    <div id="article6-content" class="hidden mt-4">
+                        <p>After cancer treatment, it's essential to focus on recovery and maintaining a healthy lifestyle. Regular exercise, a nutritious diet, and routine follow-up care can help survivors manage their health and reduce the risk of recurrence. Engaging in physical activities not only improves physical health but also boosts mental well-being. Survivors should also prioritize regular check-ups and screenings to monitor their health status. Additionally, connecting with support groups can provide emotional support and shared experiences, helping individuals navigate life after cancer. Embracing a proactive approach to health can lead to a fulfilling life post-treatment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3f26037e-f0e3-4370-9deb-a2fc5239996b.png"
+                            alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                            class="h-8 w-8">
+                        <span class="ml-2 text-xl font-bold text-white">Prevention Pioneers</span>
+                    </div>
+                    <p class="mb-4">Empowering individuals with tools and knowledge for cancer prevention and early
+                        detection.</p>
+                    <p class="mb-4"><b>Credits:</b></p>
+                    <p class="mb-4">Concept Originator-Moupiya Biswas,B.tech,Biotechnology</p>
+                    <p class="mb-4">Applicaton Devloper-Soumyodipto Pal,BCA(H)</p>
+                    <p class="mb-4">Other Members-</p>
+                    <p class="mb-4">Anish Paul,BCA(H)</p>
+                    <p class="mb-4">Debjit Das,B.sc,Data Science</p>
+                    <p class="mb-4">Nisha Sarkar,BBA(H)</p>
+                    <p class="mb-4">Shreya Chowdhury,BBA(H)</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#subscriptions" class="hover:text-white">Subscriptions</a></li>
+                        <li><a href="#doctors" class="hover:text-white">Hospitals</a></li>
+                        <li><a href="#resources" class="hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>EM-3,Sector III, Saltlake</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>033-66-19927</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>support@preventionpioneers.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="mb-4 md:mb-0">
+                        © 2025 Prevention Pioneers. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-white">Privacy Policy</a>
+                        <a href="#" class="hover:text-white">Terms of Service</a>
+                        <a href="#" class="hover:text-white">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      function showLogin() {
+        document.getElementById("loginForm").classList.remove("hidden");
+        document.getElementById("signupForm").classList.add("hidden");
+        document.getElementById("loginBtn").classList.add("bg-blue-600");
+        document.getElementById("loginBtn").classList.remove("bg-gray-300");
+        document.getElementById("signupBtn").classList.add("bg-gray-300");
+        document.getElementById("signupBtn").classList.remove("bg-blue-600");
+      }
+    
+      function showSignup() {
+        document.getElementById("signupForm").classList.remove("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("signupBtn").classList.add("bg-blue-600");
+        document.getElementById("signupBtn").classList.remove("bg-gray-300");
+        document.getElementById("loginBtn").classList.add("bg-gray-300");
+        document.getElementById("loginBtn").classList.remove("bg-blue-600");
+      }
+      </script>
+</body>
+</html>

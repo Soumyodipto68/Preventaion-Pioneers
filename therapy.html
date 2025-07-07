@@ -1,0 +1,386 @@
+<!<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevention Pioneers - Cancer Prevention Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#EC4899',
+                        dark: '#1F2937',
+                        light: '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions and animations */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+        .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1893d6f6;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #f4f2f2;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      color: #f1f1f1;
+      font-weight: bolder;
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
+    .openbtn {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="hidden md:block">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                        alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                        class="h-8 w-8">
+                    <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+                </div>
+                </div> 
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#home"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Home</a>
+                        <a href="#features"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Features</a>
+                        <a href="#subscriptions"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Subscriptions</a>
+                        <a href="#doctors"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Hospitals</a>
+                        <a href="#resources"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Resources</a>
+                    </div>
+                </div>
+
+                <!-- Login/Signup Buttons -->
+                <div class="hidden md:block">
+                    <button onclick="showAuthModal('login')"
+                        class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition-all"><a href="login.html">Log in</a></button>
+                    <button onclick="showAuthModal('signup')"
+                        class="ml-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-all"><a href="login.html">Sign up</a>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <!-- <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div class="container mx-auto flex justify-between items-center">
+        <!-- <h1 class="text-2xl font-bold">Prevention Pioneers</h1> -->
+         <div class="md:hidden">
+        <div class="flex-shrink-0 flex items-center">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                class="h-8 w-8">
+            <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+        </div>
+    </div>
+        <span class="openbtn block md:hidden" onclick="openNav()"><i class="fas fa-bars text-2xl"></i></span>
+        <nav id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="#home"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Home</a>
+      <a href="#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Features</a>
+      <a href="#subscriptions"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Subscriptions</a>
+      <a href="#doctors"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Hospitals</a>
+      <a href="#resources"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Resources</a>
+          <div>  
+          <button onclick="showAuthModal('login')"
+          class="w-full mt-2 px-4 py-2 text-white text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white">Login</button>
+          </div>
+        <div>  
+      <button onclick="showAuthModal('signup')"
+          class="w-full mt-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700">Sign
+          Up</button>
+        </div>  
+        </nav>
+      </div>
+    <!-- Therapy Sessions Section -->
+    <section id="therapy-sessions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Cancer Therapy Sessions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find a therapist specializing in cancer care to support your mental health during treatment.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Therapist 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 1" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Vaivab Gupta</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Oncology Counseling</p>
+                    <p class="text-gray-600 mb-4">Experience: 10 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist1-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist1-details" class="hidden mt-4">
+                        <p>Dr. Vaivab Gupta is a licensed therapist with 10 years of experience in oncology counseling. She specializes in helping cancer patients cope with the emotional challenges of their diagnosis and treatment.</p>
+                    </div>
+                </div>
+
+                <!-- Therapist 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://via.placeholder.com/300x200?text=Therapist+2https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 2" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Rittika Shaw</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Supportive Therapy</p>
+                    <p class="text-gray-600 mb-4">Experience: 15 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist2-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist2-details" class="hidden mt-4">
+                        <p>Dr. Rittika Shaw is a licensed therapist with 15 years of experience in supportive therapy for cancer patients. He focuses on emotional support and coping strategies for patients and their families.</p>
+                    </div>
+                </div>
+
+                <!-- Therapist 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 3" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Jiah Khan</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Grief Counseling</p>
+                    <p class="text-gray-600 mb-4">Experience: 5 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist3-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist3-details" class="hidden mt-4">
+                        <p>Dr. Jiah Khan is a licensed therapist with 5 years of experience in grief counseling for cancer patients. She helps individuals navigate the emotional complexities of loss and change.</p>
+                    </div>
+                </div>
+
+                <!-- Therapist 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 4" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Mikesh Chaudhury</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Family Therapy</p>
+                    <p class="text-gray-600 mb-4">Experience: 10 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist4-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist4-details" class="hidden mt-4">
+                        <p>Dr. Mikesh Chaudhuryis a licensed therapist with 10 years of experience in family therapy. He specializes in helping families cope with the impact of cancer on their relationships.</p>
+                    </div>
+                </div>
+
+                <!-- Therapist 5 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 5" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Shanon Verma</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Mindfulness and Stress Reduction</p>
+                    <p class="text-gray-600 mb-4">Experience: 5 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist5-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist5-details" class="hidden mt-4">
+                        <p>>Dr. Shanon Verma is a licensed therapist with 5 years of experience in mindfulness and stress reduction techniques for cancer patients. She helps individuals manage anxiety and improve their quality of life.</p>
+                    </div>
+                </div>
+
+                <!-- Therapist 6 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <img src="https://th.bing.com/th/id/OIP.c5t6F_yaB4fviwpyLZSx2wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Therapist 6" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold mb-2">Dr. Ritu Tripathu</h3>
+                    <p class="text-gray-600 mb-2">Specialty: Art Therapy</p>
+                    <p class="text-gray-600 mb-4">Experience: 10 years</p>
+                    <div class="flex justify-between">
+                        <button onclick="toggleTherapistDetails('therapist6-details')" class="text-primary font-semibold">More Details</button>
+                        <button class="mt-2 w-1/2 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Schedule Session</button>
+                    </div>
+                    <div id="therapist6-details" class="hidden mt-4">
+                        <p>Dr. David Kim is a licensed therapist with 10 years of experience in art therapy. He specializes in helping cancer patients express their feelings and emotions through creative outlets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3f26037e-f0e3-4370-9deb-a2fc5239996b.png"
+                            alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                            class="h-8 w-8">
+                        <span class="ml-2 text-xl font-bold text-white">Prevention Pioneers</span>
+                    </div>
+                    <p class="mb-4">Empowering individuals with tools and knowledge for cancer prevention and early
+                        detection.</p>
+                    <p class="mb-4"><b>Credits:</b></p>
+                    <p class="mb-4">Concept Originator-Moupiya Biswas,B.tech,Biotechnology</p>
+                    <p class="mb-4">Applicaton Devloper-Soumyodipto Pal,BCA(H)</p>
+                    <p class="mb-4">Other Members-</p>
+                    <p class="mb-4">Anish Paul,BCA(H)</p>
+                    <p class="mb-4">Debjit Das,B.sc,Data Science</p>
+                    <p class="mb-4">Nisha Sarkar,BBA(H)</p>
+                    <p class="mb-4">Shreya Chowdhury,BBA(H)</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#subscriptions" class="hover:text-white">Subscriptions</a></li>
+                        <li><a href="#doctors" class="hover:text-white">Hospitals</a></li>
+                        <li><a href="#resources" class="hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>EM-3,Sector III, Saltlake</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>033-66-19927</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>support@preventionpioneers.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="mb-4 md:mb-0">
+                        © 2025 Prevention Pioneers. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-white">Privacy Policy</a>
+                        <a href="#" class="hover:text-white">Terms of Service</a>
+                        <a href="#" class="hover:text-white">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      function showLogin() {
+        document.getElementById("loginForm").classList.remove("hidden");
+        document.getElementById("signupForm").classList.add("hidden");
+        document.getElementById("loginBtn").classList.add("bg-blue-600");
+        document.getElementById("loginBtn").classList.remove("bg-gray-300");
+        document.getElementById("signupBtn").classList.add("bg-gray-300");
+        document.getElementById("signupBtn").classList.remove("bg-blue-600");
+      }
+    
+      function showSignup() {
+        document.getElementById("signupForm").classList.remove("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("signupBtn").classList.add("bg-blue-600");
+        document.getElementById("signupBtn").classList.remove("bg-gray-300");
+        document.getElementById("loginBtn").classList.add("bg-gray-300");
+        document.getElementById("loginBtn").classList.remove("bg-blue-600");
+      }
+      </script>
+</body>
+</html>

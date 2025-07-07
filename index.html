@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevention Pioneers - Cancer Prevention Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#EC4899',
+                        dark: '#1F2937',
+                        light: '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions and animations */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+        .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #1893d6f6;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #f4f2f2;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      color: #f1f1f1;
+      font-weight: bolder;
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
+    .openbtn {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="hidden md:block">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                        alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                        class="h-8 w-8">
+                    <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+                </div>
+                </div> 
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#home"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Home</a>
+                        <a href="#features"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Features</a>
+                        <a href="#subscriptions"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Subscriptions</a>
+                        <a href="#doctors"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Hospitals</a>
+                        <a href="#resources"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary transition-all">Resources</a>
+                    </div>
+                </div>
+
+                <!-- Login/Signup Buttons -->
+                <div class="hidden md:block">
+                    <button onclick="showAuthModal('login')"
+                        class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition-all"><a href="login.html">Log in</a></button>
+                    <button onclick="showAuthModal('signup')"
+                        class="ml-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-all"><a href="login.html">Sign up</a>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <!-- <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div class="container mx-auto flex justify-between items-center">
+        <!-- <h1 class="text-2xl font-bold">Prevention Pioneers</h1> -->
+         <div class="md:hidden">
+        <div class="flex-shrink-0 flex items-center">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f7d13c6-9ab8-447f-9329-0ded853bf192.png"
+                alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                class="h-8 w-8">
+            <span class="ml-2 text-xl font-bold text-primary">Prevention Pioneers</span>
+        </div>
+    </div>
+        <span class="openbtn block md:hidden" onclick="openNav()"><i class="fas fa-bars text-2xl"></i></span>
+        <nav id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="#home"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Home</a>
+      <a href="#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Features</a>
+      <a href="#subscriptions"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Subscriptions</a>
+      <a href="#doctors"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Hospitals</a>
+      <a href="#resources"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary">Resources</a>
+          <div>  
+          <button onclick="showAuthModal('login')"
+          class="w-full mt-2 px-4 py-2 text-white text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white">Login</button>
+          </div>
+        <div>  
+      <button onclick="showAuthModal('signup')"
+          class="w-full mt-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700">Sign
+          Up</button>
+        </div>  
+        </nav>
+      </div>
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-primary to-secondary py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Take Control of Your Health with Prevention Pioneers
+                    </h1>
+                    <p class="text-xl mb-8">Your comprehensive platform for cancer prevention, early detection, and
+                        holistic care.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button onclick="showAuthModal('signup')"
+                            class="px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-all animate-pulse">Get
+                            Started</button>
+                        <button
+                            class="px-8 py-3 border-2 border-white text-white font-bold rounded-md hover:bg-white hover:text-primary transition-all">Learn
+                            More</button>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d0dd31a-b654-43b1-a591-959ede52cef1.png"
+                        alt="Happy diverse group of doctors and patients discussing healthcare in a modern clinic setting"
+                        class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Our Comprehensive Features</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Empowering you with tools and resources to take proactive
+                    control of your health journey.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <a href="tracker3.html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div
+                        class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Health Tracker</h3>
+                    <p class="text-gray-600">Monitor your health metrics, symptoms, and preventive screenings with our
+                        comprehensive tracking tool.</p>
+                </div>
+                </a>
+                <!-- Feature 2 -->
+                <a href="doctor.html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Doctor's Appointment</h3>
+                    <p class="text-gray-600">Book appointments with top oncologists and specialists in your area with
+                        our easy scheduling system.</p>
+                </div>
+                </a>
+                <!-- Feature 3 -->
+                <a href="medicine.html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div class="w-16 h-16 bg-accent bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-pills text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Medicine Booking</h3>
+                    <p class="text-gray-600">Order and manage your prescriptions with our pharmacy partners for timely
+                        delivery to your doorstep.</p>
+                </div>
+                </a>
+                <!-- Feature 4 -->
+                <a href="magazine (1).html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-newspaper text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cancer Magazines</h3>
+                    <p class="text-gray-600">Access the latest research, articles, and news about cancer prevention from
+                        trusted medical sources.</p>
+                </div>
+                </a>
+                <!-- Feature 5 -->
+                <a href="therapy.html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div
+                        class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Therapy Sessions</h3>
+                    <p class="text-gray-600">Connect with licensed therapists specializing in cancer-related mental
+                        health support.</p>
+                </div>
+                </a>
+                <!-- Feature 6 -->
+                <a href="hospital (1).html">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div class="w-16 h-16 bg-accent bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hospital text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Hospital Directory</h3>
+                    <p class="text-gray-600">Find and compare top-rated cancer treatment centers and hospitals near you.
+                    </p>
+                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Subscription Plans -->
+    <section id="subscriptions" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Premium Membership Plans</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose the plan that fits your needs and get access to
+                    exclusive features and benefits.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Silver Plan -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-105">
+                    <div class="bg-gray-200 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-gray-700">Silver</h3>
+                        <p class="text-gray-600">Basic prevention tools</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">Rs. 133.16</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Basic health tracker</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Limited doctor appointments (2/month)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Access to general magazines</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-gray-400 mt-1 mr-2"></i>
+                                <span class="text-gray-400">Therapy sessions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-gray-400 mt-1 mr-2"></i>
+                                <span class="text-gray-400">Medicine delivery</span>
+                            </li>
+                        </ul>
+                        <a href="silver.html">
+                        <button
+                            class="w-full py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-700 transition-all">Get
+                            Started</button>
+                        </a>    
+                    </div>
+                </div>
+
+                <!-- Gold Plan (Featured) -->
+                <div
+                    class="bg-white rounded-lg shadow-xl border-2 border-primary transform transition-all hover:scale-105">
+                    <div class="bg-primary px-6 py-4">
+                        <h3 class="text-2xl font-bold text-white">Gold</h3>
+                        <p class="text-blue-100">Most Popular - Comprehensive care</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">Rs. 208.25</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Advanced health tracker</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Priority doctor appointments (5/month)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Premium magazines & research</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Monthly therapy session</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Medicine delivery (10% discount)</span>
+                            </li>
+                        </ul>
+                        <a href="gold.html">
+                        <button
+                            class="w-full py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-700 transition-all">Get
+                            Started</button>
+                        </a>    
+                    </div>
+                </div>
+
+                <!-- Platinum Plan -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-105">
+                    <div class="bg-gray-800 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-white">Platinum</h3>
+                        <p class="text-gray-300">Premium concierge service</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">Rs. 316.50</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Comprehensive health tracker</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Unlimited priority appointments</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>All premium magazines + research</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Weekly therapy sessions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Medicine delivery (20% discount)</span>
+                            </li>
+                        </ul>
+                        <a href="platinum.html">
+                        <button
+                            class="w-full py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-700 transition-all">Get
+                            Started</button>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Hospitals Section -->
+    <section id="doctors" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Top Cancer Treatment Centers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Partnered with the best hospitals and treatment centers for
+                    comprehensive care.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hospital 1 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/22d31b2c-8aff-41a3-8409-105de9f0df38.png"
+                        alt="Modern state-of-the-art cancer treatment center with glass facade and green spaces"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hope Cancer Institute</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-1 text-sm">4.8 (320 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Specialized in comprehensive cancer care with cutting-edge
+                            technology and personalized treatment plans.</p>
+                        <div class="flex justify-between items-center">
+                            <span>
+                                <i class="fas fa-map-marker-alt text-primary mr-1"></i>
+                                <span>2.3 miles away</span>
+                            </span>
+                            <button class="text-primary font-medium hover:underline">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospital 2 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e469f109-13a6-4500-bd0c-760286a7bd42.png"
+                        alt="Cancer research hospital with modern architecture and patient gardens"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">City Oncology Center</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-1 text-sm">5.0 (285 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pioneers in precision medicine and immunotherapy with a holistic
+                            approach to cancer treatment.</p>
+                        <div class="flex justify-between items-center">
+                            <span>
+                                <i class="fas fa-map-marker-alt text-primary mr-1"></i>
+                                <span>5.1 miles away</span>
+                            </span>
+                            <button class="text-primary font-medium hover:underline">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospital 3 -->
+                <div
+                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d50e5a4f-273d-42a9-8c6d-e2f636cb3ef0.png"
+                        alt="World-renowned cancer hospital with advanced treatment facilities and research labs"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Metropolitan Cancer Center</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-1 text-sm">4.9 (412 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">World-renowned center for advanced cancer treatment with a focus
+                            on minimally invasive procedures.</p>
+                        <div class="flex justify-between items-center">
+                            <span>
+                                <i class="fas fa-map-marker-alt text-primary mr-1"></i>
+                                <span>8.7 miles away</span>
+                            </span>
+                            <button class="text-primary font-medium hover:underline">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="hospital (1).html">
+                <button
+                    class="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-700 transition-all">View
+                    All Hospitals</button>
+                </a>    
+            </div>
+        </div>
+    </section>
+
+    <!-- Cancer Magazines Section -->
+    <section id="resources" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Cancer Prevention Resources</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Latest research, articles, and magazines to keep you informed
+                    about prevention.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Magazine 1 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d2f0f50-141c-4e9f-a425-0cafcec2c4ef.png"
+                        alt="Cover of Cancer Prevention Today magazine with latest research highlights"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-primary font-medium">July 2023 Issue</span>
+                        <h3 class="text-lg font-bold mb-2">Cancer Prevention Today</h3>
+                        <p class="text-gray-600 text-sm mb-3">Latest research on lifestyle changes that can reduce
+                            cancer risk by up to 50%.</p>
+                        <button class="text-primary font-medium text-sm hover:underline">Read More</button>
+                    </div>
+                </div>
+
+                <!-- Magazine 2 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/98ef43b7-7745-4561-a76f-7913d12c25e8.png"
+                        alt="Medical journal cover showing breakthroughs in early cancer detection methods"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-primary font-medium">Research Digest</span>
+                        <h3 class="text-lg font-bold mb-2">Early Detection Breakthroughs</h3>
+                        <p class="text-gray-600 text-sm mb-3">New blood tests that can detect cancer 4 years before
+                            symptoms appear.</p>
+                        <button class="text-primary font-medium text-sm hover:underline">Read More</button>
+                    </div>
+                </div>
+
+                <!-- Magazine 3 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9deb7fc3-a7a0-4493-b3ba-b8f36ef9dd24.png"
+                        alt="Nutrition guide cover showing cancer-fighting superfoods and meal plans"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-primary font-medium">Nutrition Guide</span>
+                        <h3 class="text-lg font-bold mb-2">Foods That Fight Cancer</h3>
+                        <p class="text-gray-600 text-sm mb-3">Evidence-based dietary recommendations and meal plans for
+                            prevention.</p>
+                        <button class="text-primary font-medium text-sm hover:underline">Read More</button>
+                    </div>
+                </div>
+
+                <!-- Magazine 4 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8eab8d1-6f9c-4978-8cd9-f92bff6c04e0.png"
+                        alt="Patient stories magazine featuring survivors sharing their prevention journeys"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-primary font-medium">Patient Stories</span>
+                        <h3 class="text-lg font-bold mb-2">Survivor Prevention Journeys</h3>
+                        <p class="text-gray-600 text-sm mb-3">Inspiring stories from cancer survivors who took
+                            preventive measures.</p>
+                        <button class="text-primary font-medium text-sm hover:underline">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="magazine (1).html">
+                <button
+                    class="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-blue-700 transition-all">View
+                    All Article </button>
+                </a>    
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Tracker Preview -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-bold mb-4">Personal Health Tracker</h2>
+                    <p class="text-xl mb-6">Monitor key health indicators, track symptoms, and get personalized
+                        recommendations based on your risk profile.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Regular checkups</span>
+                                <span>75% complete</span>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-20 rounded-full h-2">
+                                <div class="bg-white h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Risk factors addressed</span>
+                                <span>60% complete</span>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-20 rounded-full h-2">
+                                <div class="bg-white h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Preventive screenings</span>
+                                <span>45% complete</span>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-20 rounded-full h-2">
+                                <div class="bg-white h-2 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="tracker3.html">
+                    <button onclick="showAuthModal('signup')"
+                        class="mt-8 px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-all">Start
+                        Tracking</button>
+                    </a>    
+                </div>
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/db3456e3-e7b9-401d-9a44-c3eefef185f4.png"
+                        alt="Mobile app interface showing health tracking dashboard with metrics and wellness goals"
+                        class="rounded-lg shadow-2xl">
+                    <div class="absolute -bottom-4 -right-4 bg-white text-dark p-4 rounded-lg shadow-lg">
+                        <div class="text-xs text-gray-500">UPCOMING SCREENING</div>
+                        <div class="font-bold">Mammogram</div>
+                        <div class="text-sm text-gray-600">July 15, 2025 | 10:30 AM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">What Our Members Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Success stories from people who've taken control of their
+                    health with Prevention Pioneers.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/792f427e-ee50-4b49-9d48-269b15d3f410.png"
+                            alt="Portrait of Sarah Johnson, breast cancer survivor in her 40s"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Prgati Pandey</h4>
+                            <div class="flex text-yellow-500 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Prevention Pioneers helped me detect my breast cancer at stage 1. The
+                        tracking tools keep me updated and doctor appointments made all the difference in my early diagnosis and
+                        successful treatment."</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1eb39288-f614-47cd-8dec-f962e09f2caf.png"
+                            alt="Portrait of Michael Chen, preventive care advocate in his 50s"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ritam Chakraborty</h4>
+                            <div class="flex text-yellow-500 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The personalized prevention plan based on my family history has given me
+                        peace of mind. The medicine delivery service saves me so much time and stress."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/778d9902-d006-447a-97a3-4f22a622fed3.png"
+                            alt="Portrait of David Brown, prostate cancer survivor in his 60s"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Dinesh Sharma</h4>
+                            <div class="flex text-yellow-500 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"After my prostate cancer treatment, the therapy sessions and health
+                        tracking have been invaluable in my recovery. The Platinum plan is worth every penny."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Take Control of Your Health?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of members who are proactively managing their
+                health with Prevention Pioneers.</p>
+                <a href="login.html">    
+            <button onclick="showAuthModal('signup')"
+                class="px-8 py-3 bg-white text-primary font-bold rounded-md hover:bg-gray-100 transition-all mr-4">Sign Up Today</button></a>
+            <a href="login.html">
+            <button onclick="showAuthModal('login')"
+                class="px-8 py-3 border-2 border-white text-white font-bold rounded-md hover:bg-white hover:text-primary transition-all">Login</button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3f26037e-f0e3-4370-9deb-a2fc5239996b.png"
+                            alt="Prevention Pioneers logo with a DNA strand and shield symbol in blue and green"
+                            class="h-8 w-8">
+                        <span class="ml-2 text-xl font-bold text-white">Prevention Pioneers</span>
+                    </div>
+                    <p class="mb-4">Empowering individuals with tools and knowledge for cancer prevention and early
+                        detection.</p>
+                    <p class="mb-4"><b>Credits:</b></p>
+                    <p class="mb-4">Concept Originator-Moupiya Biswas,B.tech,Biotechnology</p>
+                    <p class="mb-4">Applicaton Devloper-Soumyodipto Pal,BCA(H)</p>
+                    <p class="mb-4">Other Members-</p>
+                    <p class="mb-4">Anish Paul,BCA(H)</p>
+                    <p class="mb-4">Debjit Das,B.sc,Data Science</p>
+                    <p class="mb-4">Nisha Sarkar,BBA(H)</p>
+                    <p class="mb-4">Shreya Chowdhury,BBA(H)</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#subscriptions" class="hover:text-white">Subscriptions</a></li>
+                        <li><a href="#doctors" class="hover:text-white">Hospitals</a></li>
+                        <li><a href="#resources" class="hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>EM-3,Sector III, Saltlake</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>033-66-19927</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>support@preventionpioneers.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="mb-4 md:mb-0">
+                        © 2025 Prevention Pioneers. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-white">Privacy Policy</a>
+                        <a href="#" class="hover:text-white">Terms of Service</a>
+                        <a href="#" class="hover:text-white">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>    
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      function showLogin() {
+        document.getElementById("loginForm").classList.remove("hidden");
+        document.getElementById("signupForm").classList.add("hidden");
+        document.getElementById("loginBtn").classList.add("bg-blue-600");
+        document.getElementById("loginBtn").classList.remove("bg-gray-300");
+        document.getElementById("signupBtn").classList.add("bg-gray-300");
+        document.getElementById("signupBtn").classList.remove("bg-blue-600");
+      }
+    
+      function showSignup() {
+        document.getElementById("signupForm").classList.remove("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("signupBtn").classList.add("bg-blue-600");
+        document.getElementById("signupBtn").classList.remove("bg-gray-300");
+        document.getElementById("loginBtn").classList.add("bg-gray-300");
+        document.getElementById("loginBtn").classList.remove("bg-blue-600");
+      }
+      </script>
+</body>
+</html>
